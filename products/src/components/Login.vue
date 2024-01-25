@@ -94,7 +94,7 @@ export default {
                         this.isloading = false;
                         this.userToken = data.data.token;
                         if (data.status === 200) {
-                            route.push({ path: '/home', params: { token: this.userToken } })
+                            route.push({ path: '/home',  })
                         }
                     })
                     .catch(() => {
@@ -192,9 +192,6 @@ button.button_login:hover {
     font-size: 15px;
 }
 
-/* .loadingClass{
-    position: fixed;
-} */
 
 .LoginShowPassword {
     margin-top: 8px;
