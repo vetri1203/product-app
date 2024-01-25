@@ -1,15 +1,34 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import HomeApp from './components/Home';
-import NotFound from './components/PageNotFound'
+import NotFound from './components/PageNotFound';
+import Login from './components/Login';
+import Signup from './components/Signup';
 
 const routes = [
     {
-        path: '/',
+        path: '/home',
         name: "Home",
         component:HomeApp
         
     },
+
+    {
+        path: '/',
+        name: "Login",
+        component:Login
+    },
+    {
+        path: '/signup',
+        name: "Signup",
+        component:Signup
+    },
+
+
+
+
+
+    /*page not found and bad requeest*/
 
     {
         path: '/404',
