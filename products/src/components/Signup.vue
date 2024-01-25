@@ -57,7 +57,7 @@
 import axios from 'axios';
 import Loading from './Loading.vue';
 import route from '@/router';
-
+import cookies from 'vue-cookie'
 
 
 export default {
@@ -99,6 +99,7 @@ export default {
 
                 ).then(data => {
                     this.isLoading = false;
+                    cookies.set('username',this.user.userName)
                     route.push('/home')
                     console.log(data.data)
                 }).catch(err => {

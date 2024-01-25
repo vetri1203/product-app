@@ -57,6 +57,7 @@
 import axios from 'axios';
 import Loading from './Loading.vue'
 import route from '@/router';
+import useCookies from 'vue-cookie';
 
 export default {
     name: "LoginVue",
@@ -70,7 +71,8 @@ export default {
             isShow: 'password',
             errMsg: '',
             userToken: '',
-            borderColoer: 'none'
+            borderColoer: 'none',
+            
         };
     },
     methods: {
@@ -94,6 +96,11 @@ export default {
                         this.isloading = false;
                         this.userToken = data.data.token;
                         if (data.status === 200) {
+                            if (useCookies.get('username'))
+                            {
+                                useCookies.delete('username');
+                            }
+                            useCookies.set('username',this.user.userName,1)
                             route.push({ path: '/home',  })
                         }
                     })
