@@ -56,6 +56,7 @@
 <script>
 import axios from 'axios';
 import Loading from './Loading.vue';
+import route from '@/router';
 
 
 
@@ -98,6 +99,7 @@ export default {
 
                 ).then(data => {
                     this.isLoading = false;
+                    route.push('/home')
                     console.log(data.data)
                 }).catch(err => {
                     this.isLoading = false;
