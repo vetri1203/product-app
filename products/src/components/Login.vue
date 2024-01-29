@@ -58,7 +58,7 @@ import axios from 'axios';
 import Loading from './Loading.vue'
 import route from '@/router';
 import useCookies from 'vue-cookie';
-
+import jwtDecode from 'vue-jwt-decode';
 export default {
     name: "LoginVue",
     data() {
@@ -95,12 +95,14 @@ export default {
                     .then((data) => {
                         this.isloading = false;
                         this.userToken = data.data.token;
+                        console.log(data);
+                        console.log(jwtDecode.decode(this.userToken).sub);
                         if (data.status === 200) {
-                            if (useCookies.get('username'))
+                            if (useCookies.get('token'))
                             {
-                                useCookies.delete('username');
+                                useCookies.delete('token');
                             }
-                            useCookies.set('username',this.user.userName,1)
+                            useCookies.set('token',this.userToken,1)
                             route.push({ path: '/home',  })
                         }
                     })

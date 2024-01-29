@@ -11,7 +11,6 @@
                         <input type="text" required="true"  autocomplete="username" id="userName_signup"
                             placeholder="username">
                     </div>
-
                     <div class="signupEmail">
                         <label for="email_signup" class="email_lable_signup">email</label><br>
                         <input type="email" required="true" id="email_signup" placeholder="email">
@@ -99,9 +98,9 @@ export default {
 
                 ).then(data => {
                     this.isLoading = false;
-                    cookies.set('username',this.user.userName)
+                    cookies.set('token',data.data.token)
                     route.push('/home')
-                    console.log(data.data)
+                    console.log(data.data.token)
                 }).catch(err => {
                     this.isLoading = false;
                     this.errMsg="unable to signup"
